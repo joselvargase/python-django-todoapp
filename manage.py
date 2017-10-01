@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import os
 import sys
-
+print("holaMundopythonDjango");
 if __name__ == "__main__":
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "todosapp.settings")
     try:
