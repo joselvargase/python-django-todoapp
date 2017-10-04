@@ -1,0 +1,86 @@
+{% load static %}
+{% load Experimento_1_extras %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+      <link rel="icon" href="{% static 'images/favicon.ico' %}">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <!-- Custom styles for this template -->
+    <link href="{%  static 'css/starter-template.css' %}" rel="stylesheet">
+      <title>CCV</title>
+  </head>
+  <body>
+
+  <div class="container">
+  <div class="header clearfix">
+        <nav>
+          <ul class="nav nav-pills float-right">
+            <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Clientes</a>
+            <div class="dropdown-menu" aria-labelledby="dropdown01">
+              <a class="dropdown-item" href="../listarClientes">Listar Clientes</a>
+              <a class="dropdown-item" href="../crearCliente">Crear Cliente</a>
+            </div>
+            </li>
+              <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Concesionarios</a>
+            <div class="dropdown-menu" aria-labelledby="dropdown01">
+              <a class="dropdown-item" href="../listarConcesionarios">Listar Concesionarios</a>
+              <a class="dropdown-item" href="../crearConcesionario">Crear Concesionario</a>
+            </div>
+            </li>
+              <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Vitrinas</a>
+            <div class="dropdown-menu" aria-labelledby="dropdown01">
+              <a class="dropdown-item" href="../listarVitrinas">Listar Vitrinas</a>
+              <a class="dropdown-item" href="../crearVitrina">Crear Vitrina</a>
+            </div>
+            </li>
+              <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Vehículos</a>
+            <div class="dropdown-menu" aria-labelledby="dropdown01">
+              <a class="dropdown-item" href="../listarVehiculos">Listar Vehículos</a>
+              <a class="dropdown-item" href="../crearVehiculo">Crear Vehiculo</a>
+            </div>
+            </li>
+          </ul>
+        </nav>
+      <h3 class="text-muted"><a href="/ccv" style="text-decoration: none"><img alt="Brand" src="{% static 'images/car.png' %}" width="38px" height="38px"></a>   CCV</h3>
+      </div>
+          {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>{{ message }}</div>
+{% endfor %}
+{% endif %}
+           <h2 style="text-align: center">Crear Vitrina</h2><br>
+  <div class="jumbotron" style="text-align: justify">
+    <form action="../crearVitrina/" method="post" style="padding-left: 20%; padding-right: 20%">
+        {% csrf_token %}
+        {% for field in form %}
+        <div class="fieldWrapper">
+            {{ field.errors }}
+            <p class="lead"><strong>{{ field.label_tag }}</strong><br>{{ field|addcss:"form-control" }}</p>
+        </div>
+    {% endfor %}
+    <div style="text-align:center">
+        <input type="submit" class="btn btn-primary" value="Registrar"/></div>
+    </form>
+  </div>
+  <br>
+  <footer class="footer">
+        <p>&copy;Universidad de los Andes - MISO-4206 - Grupo 4</p>
+      </footer>
+      </div>
+  </body>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="{% static 'js/popper.min.js'%}"></script>
+  <script src="{% static 'js/bootstrap.min.js'%}"></script>
+</html>

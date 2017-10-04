@@ -1,10 +1,17 @@
-from django.conf.urls import url, include
-from rest_framework.urlpatterns import format_suffix_patterns
-from Experimento_1 import views
+from django.conf.urls import url
 
-urlpatterns = {
-    url(r'^$', views.TodoList.as_view(), name='list'),
-    url(r'^(?P<pk>[0-9]+)/$', views.TodoDetail.as_view(), name='details'),
-}
+from . import views
 
-urlpatterns = format_suffix_patterns(urlpatterns)
+urlpatterns = [
+    url(r'^$', views.index, name='index'),
+    url(r'^crearCliente/$', views.create_client, name='crearCliente'),
+    url(r'^crearConcesionario/$', views.create_concessionaire, name='crearConcesionario'),
+    url(r'^crearVitrina/$', views.create_vitrina, name='crearVitrina'),
+    url(r'^crearVehiculo/$', views.create_vehicle, name='crearVehiculo'),
+    url(r'^listarClientes/$', views.cliente_list, name='listarClientes'),
+    url(r'^listarVehiculos/$', views.go_to_vehiculo_list_template, name='listarVehiculos'),
+    url(r'^listarVehiculosTotales/$', views.vehiculo_list, name='listarVehiculosTotales'),
+    url(r'^listarVehiculosPorVitrina/$', views.vehiculo_list_vitrina_filter, name='listarVehiculosPorVitrina'),
+    url(r'^listarConcesionarios/$', views.concesionario_list, name='listarConcesionarios'),
+    url(r'^listarVitrinas/$', views.vitrina_list, name='listarVitrinas')
+]

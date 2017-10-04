@@ -1,5 +1,5 @@
 """
-WSGI config for todosapp project.
+WSGI config for CCV project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
