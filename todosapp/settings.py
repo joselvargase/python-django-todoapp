@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'todos.apps.TodosConfig',
+    'todos4321.apps.TodosConfig',
     'corsheaders',
 ]
 
@@ -89,7 +89,7 @@ WSGI_APPLICATION = 'todosapp.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'todos',
+        'NAME': 'todos4321',
         'USER': 'todoapp',
         'PASSWORD': '',
         'HOST': 'postgres',

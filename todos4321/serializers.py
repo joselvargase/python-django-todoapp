@@ -1,6 +1,6 @@
 from rest_framework.reverse import reverse_lazy
 from rest_framework import serializers
-from todos.models import Todos
+from todos4321.models import Todos
 from pprint import pprint
 
 
@@ -10,7 +10,7 @@ class TodoSerializer(serializers.HyperlinkedModelSerializer):
     def get_self(self, obj):
 
         request = self.context.get('request')
-        return reverse_lazy('todos:details', kwargs={'pk': obj.id}, request=request)
+        return reverse_lazy('todos4321:details', kwargs={'pk': obj.id}, request=request)
 
     class Meta:
         model = Todos

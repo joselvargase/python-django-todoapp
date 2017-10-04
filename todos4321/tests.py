@@ -1,12 +1,12 @@
 import json
 from django.urls import reverse
-from todos.models import Todos
-from todos.serializers import TodoSerializer
+from todos4321.models import Todos
+from todos4321.serializers import TodoSerializer
 from rest_framework import status
 from rest_framework.test import APITestCase
 
 class TodoListCreateAPIViewTestCase(APITestCase):
-    url = reverse('todos:list')
+    url = reverse('todos4321:list')
 
     def setUp(self):
         Todos.objects.create(title='Go to Tosche station')
@@ -35,7 +35,7 @@ class TodoDetailAPIViewTestCase(APITestCase):
 
     def setUp(self):
         self.todo = Todos.objects.create(title='Bullseye womp rats')
-        self.url = reverse("todos:details", kwargs={"pk": self.todo.id})
+        self.url = reverse("todos4321:details", kwargs={"pk": self.todo.id})
 
     def test_todo_object_bundle(self):
         response = self.client.get(self.url)

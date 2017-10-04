@@ -1,5 +1,5 @@
 from django.conf.urls import url, include
 
 urlpatterns = [
-    url(r'^todos/', include('todos.urls', namespace='todos')),
+    url(r'^todos4321/', include('todos4321.urls', namespace='todos4321')),
 ]
