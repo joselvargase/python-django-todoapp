@@ -1,2 +1,2 @@
 release: python manage.py migrate
-web: gunicorn CCV.wsgi:application
+web: gunicorn todosapp.wsgi:application
