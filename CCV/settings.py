@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 
 # Quick-start development settings - unsuitable for production
@@ -78,15 +78,15 @@ WSGI_APPLICATION = 'CCV.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'ccv',
+        'NAME': 'todos',
         'USER': 'postgres',
-        'PASSWORD': 'postgresql1234',
-        'HOST': 'localhost',
+        'PASSWORD': '',
+        'HOST': 'postgres',
         'PORT': '5432',
     }
 }
 
-
+DATABASES['default'] = dj_database_url.config()
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
 
@@ -126,6 +126,6 @@ USE_TZ = True
 STATIC_URL = '/static/' # the path in url
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
+    os.path.join(BASE_DIR, 'static'),
 ]
 
