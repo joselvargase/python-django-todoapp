@@ -2,7 +2,7 @@ version: '3'
 services:
   web:
     build: .
-    command: gunicorn -b 0.0.0.0:8000 todosapp.wsgi:application
+    command: gunicorn -b 0.0.0.0:8000 todosapp4321.wsgi:application
     depends_on:
       - postgres
     volumes:
@@ -10,9 +10,9 @@ services:
     ports:
       - "8000:8000"
     environment:
-      DATABASE_URL: postgres://todoapp@postgres/todos4321
+      DATABASE_URL: postgres://todoapp@postgres/todos
   postgres:
     image: postgres:9.6.2-alpine
     environment:
       POSTGRES_USER: todoapp
-      POSTGRES_DB: todos4321
+      POSTGRES_DB: todos

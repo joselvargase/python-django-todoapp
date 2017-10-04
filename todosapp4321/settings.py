@@ -62,7 +62,7 @@ REST_FRAMEWORK = {
     )
 }
 
-ROOT_URLCONF = 'todosapp.urls'
+ROOT_URLCONF = 'todosapp4321.urls'
 
 TEMPLATES = [
     {
@@ -80,7 +80,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'todosapp.wsgi.application'
+WSGI_APPLICATION = 'todosapp4321.wsgi.application'
 
 
 # Database
@@ -89,7 +89,7 @@ WSGI_APPLICATION = 'todosapp.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'todos4321',
+        'NAME': 'todos',
         'USER': 'todoapp',
         'PASSWORD': '',
         'HOST': 'postgres',
