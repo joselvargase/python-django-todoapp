@@ -62,7 +62,7 @@ REST_FRAMEWORK = {
     )
 }
 
-ROOT_URLCONF = 'todosapp4321.urls'
+ROOT_URLCONF = 'CCV.urls'
 
 TEMPLATES = [
     {
@@ -80,7 +80,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'todosapp4321.wsgi.application'
+WSGI_APPLICATION = 'CCV.wsgi.application'
 
 
 # Database
