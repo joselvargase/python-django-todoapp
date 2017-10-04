@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'todos4321.apps.TodosConfig',
+    'Experimento_1.apps.TodosConfig',
     'corsheaders',
 ]
 

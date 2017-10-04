@@ -2,4 +2,4 @@ from django.apps import AppConfig
 
 
 class TodosConfig(AppConfig):
-    name = 'todos4321'
+    name = 'Experimento_1'
