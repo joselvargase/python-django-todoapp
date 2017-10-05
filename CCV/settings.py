@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     #'Experimento_1.apps.Experimento_1Config',
-    'Experimento_1.apps.Experimento_1Config'
+    'Experimento_1',
 ]
 
 MIDDLEWARE = [
