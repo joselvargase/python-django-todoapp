@@ -3,7 +3,7 @@ web_codeship_example_python:
   links:
     - postgres
   environment:
-    DATABASE_URL: "postgres://todoapp@postgres/todos"
+    DATABASE_URL: "postgres://bldkmbahxmmque:3b6944c0766f92cf397431fa62a8f7a91cfa8e85e26b687c71866d436175eee2@ec2-23-23-248-162.compute-1.amazonaws.com:5432/d7vlcg34kje94r"
   cached: true
 postgres:
   image: postgres:9.6.2-alpine

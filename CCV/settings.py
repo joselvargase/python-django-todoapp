@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
-#import dj_database_url
+import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -80,14 +80,14 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'todos',
-        'USER': 'postgres',
-        'PASSWORD': '',
-        'HOST': 'postgres',
+        'USER': 'bldkmbahxmmque',
+        'PASSWORD': '3b6944c0766f92cf397431fa62a8f7a91cfa8e85e26b687c71866d436175eee2',
+        'HOST': 'ec2-23-23-248-162.compute-1.amazonaws.com',
         'PORT': '5432',
     }
 }
 
-#DATABASES['default'] = dj_database_url.config()
+DATABASES['default'] = dj_database_url.config()
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
 
