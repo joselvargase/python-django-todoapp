@@ -1,4 +1,5 @@
 {% load static %}
+{% load verbose_names %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -79,19 +80,34 @@
       {% for vehiculo in vehiculos %}
           <div class="col-sm-6">
           <div class="card">
-              {% for field, value in vehiculo.fields.items %}
+              {% for field, value in vehiculo.items %}
                   {% if field == "referencia" %}
                         <h3 class="card-header"><strong>{{ value }}</strong></h3>
+                      {% elif field == 'vitrina_muestra_id' %}
+                        <li class="list-group-item"><p class="card-text"><strong>{% get_verbose_field_name 'vehiculo' field %}: </strong> {% get_verbose_field_name 'fk_vehiculo' value %}</p></li>
+                        {% elif field == 'id' %}
+                       <form action="../editarVehiculo/" method="post" id="form_edit{{ vehiculo.id }}">
+                            {% csrf_token %}
+                           <input name="id" id="id" hidden value="{{ vehiculo.id}}"/>
+                        </form>
+                      <form action="../eliminarVehiculo/" method="post" id="form_delete{{ vehiculo.id }}">
+                            {% csrf_token %}
+                           <input name="id" id="id" hidden value="{{ vehiculo.id}}"/>
+                        </form>
                       {% else %}
-                      <li class="list-group-item"><p class="card-text"><strong>{{ field|title}}: </strong> {{ value }}</p></li>
+                      <li class="list-group-item"><p class="card-text"><strong>{% get_verbose_field_name 'vehiculo' field %}: </strong> {{ value }}</p></li>
                   {% endif %}
                   {% endfor %}
-          </ul>
+          <div class="card-footer" style="text-align: center">
+              <button form="form_edit{{ vehiculo.id }}" type="submit" class="btn btn-link">Editar</button>
+              <button form="form_delete{{ vehiculo.id }}" type="submit" class="btn btn-link">Eliminar</button>
+            </div>
           </div>
           </div>
       {% endfor %}
       </div>
   <br>
+  {% if vehiculos %}
 <div class="pagination">
     <span class="step-links">
         {% if vehiculos.has_previous %}
@@ -107,6 +123,9 @@
         {% endif %}
     </span>
 </div>
+      {% else %}
+      <p> No hay Vehículos registrados en el sistema.</p>
+  {% endif %}
   <footer class="footer">
         <p>&copy; Universidad de los Andes - MISO-4206 - Grupo 4</p>
       </footer>

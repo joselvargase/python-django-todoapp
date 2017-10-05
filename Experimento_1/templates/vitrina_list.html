@@ -1,4 +1,5 @@
 {% load static %}
+{% load verbose_names %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -64,19 +65,34 @@
       {% for vitrina in vitrinas %}
           <div class="col-sm-6">
           <div class="card">
-              {% for field, value in vitrina.fields.items %}
+              {% for field, value in vitrina.items %}
                   {% if field == "nombre" %}
                         <h3 class="card-header"><strong>{{ value }}</strong></h3>
+                      {% elif field == "concesionario_perteneciente_id" %}
+                        <li class="list-group-item"><p class="card-text"><strong>{% get_verbose_field_name 'vitrina' field %}: </strong> {% get_verbose_field_name 'fk_vitrina' value %}</p></li>
+                      {% elif field == 'id' %}
+                       <form action="../editarVitrina/" method="post" id="form_edit{{ vitrina.id }}">
+                            {% csrf_token %}
+                           <input name="id" id="id" hidden value="{{ vitrina.id}}"/>
+                        </form>
+                      <form action="../eliminarVitrina/" method="post" id="form_delete{{ vitrina.id }}">
+                            {% csrf_token %}
+                           <input name="id" id="id" hidden value="{{ vitrina.id}}"/>
+                        </form>
                       {% else %}
-                      <li class="list-group-item"><p class="card-text"><strong>{{ field|title}}: </strong> {{ value }}</p></li>
+                      <li class="list-group-item"><p class="card-text"><strong>{% get_verbose_field_name 'vitrina' field %}: </strong> {{ value }}</p></li>
                   {% endif %}
                   {% endfor %}
-          </ul>
+          <div class="card-footer" style="text-align: center">
+              <button form="form_edit{{ vitrina.id }}" type="submit" class="btn btn-link">Editar</button>
+              <button form="form_delete{{ vitrina.id }}" type="submit" class="btn btn-link">Eliminar</button>
+            </div>
           </div>
           </div>
       {% endfor %}
       </div>
   <br>
+  {% if vitrinas %}
 <div class="pagination">
     <span class="step-links">
         {% if vitrinas.has_previous %}
@@ -92,6 +108,9 @@
         {% endif %}
     </span>
 </div>
+      {% else %}
+      <p> No hay Vitrinas registradas en el sistema.</p>
+  {% endif %}
   <footer class="footer">
         <p>&copy; Universidad de los Andes - MISO-4206 - Grupo 4</p>
       </footer>

@@ -1,5 +1,5 @@
 {% load static %}
-{% load verbose_names %}
+{% load Experimento_1_extras %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -15,6 +15,7 @@
       <title>CCV</title>
   </head>
   <body>
+
   <div class="container">
   <div class="header clearfix">
         <nav>
@@ -51,7 +52,6 @@
         </nav>
       <h3 class="text-muted"><a href="/ccv" style="text-decoration: none"><img alt="Brand" src="{% static 'images/car.png' %}" width="38px" height="38px"></a>   CCV</h3>
       </div>
-
           {% if messages %}
     {% for message in messages %}
     <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
@@ -60,61 +60,28 @@
   </button>{{ message }}</div>
 {% endfor %}
 {% endif %}
-      <h2 style="text-align: center">Lista de Clientes</h2><br>
-      <div class="row">
-      {% for cliente in clientes %}
-          <div class="col-sm-6">
-          <div class="card">
-              {% for field,value in cliente.items %}
-                  {% if field == "nombre" %}
-                        <h3 class="card-header"><strong>{{ value }}</strong></h3>
-                      {% elif field == 'id' %}
-                       <form action="../editarCliente/" method="post" id="form_edit{{ cliente.id }}">
-                            {% csrf_token %}
-                           <input name="id" id="id" hidden value="{{ cliente.id}}"/>
-                        </form>
-                      <form action="../eliminarCliente/" method="post" id="form_delete{{ cliente.id }}">
-                            {% csrf_token %}
-                           <input name="id" id="id" hidden value="{{ cliente.id}}"/>
-                        </form>
-                      {% else %}
-                      <li class="list-group-item"><p class="card-text"><strong>{% get_verbose_field_name 'cliente' field %}: </strong> {{ value }}</p></li>
-                  {% endif %}
-                  {% endfor %}
-          <div class="card-footer" style="text-align: center">
-              <button form="form_edit{{ cliente.id }}" type="submit" class="btn btn-link">Editar</button>
-              <button form="form_delete{{ cliente.id }}" type="submit" class="btn btn-link">Eliminar</button>
-            </div>
-          </div>
-          </div>
-      {% endfor %}
-      </div>
-  <br>
-  {% if clientes %}
-<div class="pagination">
-    <span class="step-links">
-        {% if clientes.has_previous %}
-            <a href="?page={{ clientes.previous_page_number }}">previous</a>
-        {% endif %}
-
-        <span class="current">
-            Page {{ clientes.number }} of {{ clientes.paginator.num_pages }}.
-        </span>
-
-        {% if clientes.has_next %}
-            <a href="?page={{ clientes.next_page_number }}">next</a>
-        {% endif %}
-    </span>
-</div>
-      {% else %}
-      <p> No hay Clientes registrados en el sistema.</p>
-  {% endif %}
-  <footer class="footer">
-        <p>&copy; Universidad de los Andes - MISO-4206 - Grupo 4</p>
-      </footer>
+           <h2 style="text-align: center">Editar Vehículo</h2><br>
+  <div class="jumbotron" style="text-align: justify">
+    <form action="../editarVehiculoData/" method="post" style="padding-left: 20%; padding-right: 20%">
+        {% csrf_token %}
+        {% for field in form %}
+        <div class="fieldWrapper">
+            {{ field.errors }}
+            <p class="lead"><strong>{{ field.label_tag }}</strong><br>{{ field|addcss:"form-control"}}</p>
+        </div>
+    {% endfor %}
+    <input name="id" id="id" value="{{ id }}" hidden>
+    <div style="text-align:center">
+        <input type="submit" class="btn btn-primary" value="Editar"/></div>
+    </form>
   </div>
+  <br>
+  <footer class="footer">
+        <p>&copy;Universidad de los Andes - MISO-4206 - Grupo 4</p>
+      </footer>
+      </div>
   </body>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="{% static 'js/popper.min.js'%}"></script>
   <script src="{% static 'js/bootstrap.min.js'%}"></script>
 </html>
