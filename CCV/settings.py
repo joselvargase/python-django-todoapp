@@ -9,7 +9,6 @@ https://docs.djangoproject.com/en/1.11/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.11/ref/settings/
 """
-
 import os
 import dj_database_url
 
@@ -39,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     #'Experimento_1.apps.Experimento_1Config',
-    'Experimento_1'
+    'Experimento_1.apps.Experimento_1Config'
 ]
 
 MIDDLEWARE = [
